@@ -1,0 +1,1 @@
+{"pages": {"Template": {"count_text": {"v_model": "", "children": ["Count: 0"]}, "count_btn": {"v_model": "", "value": null, "children": ["Increment"]}}}}

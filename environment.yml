@@ -1,0 +1,23 @@
+name: Dash
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python
+  - bqplot
+  - ipyleaflet
+  - ipyvuetify
+  - jupyterlab
+  - matplotlib
+  - nodejs
+  - numpy
+  - pandas
+  - seaborn
+  - voila
+  - voila-vuetify
+  - pip
+
+  - pip:
+      - ipypb
+      - netcdf4
