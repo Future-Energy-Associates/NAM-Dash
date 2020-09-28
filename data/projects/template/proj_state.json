@@ -1,1 +1,1 @@
-{"pages": {"Template": {"count_text": {"v_model": "", "children": ["Count: 9"]}, "count_btn": {"v_model": "", "value": null, "children": ["Increment"]}}, "Voila Docs": {}}, "name": null}
+{"pages": {"Template": {"count_text": {"v_model": "", "children": ["Count: 6"]}, "count_btn": {"v_model": "", "value": null, "children": ["Increment"]}}, "Voila Docs": {}}, "name": null}
