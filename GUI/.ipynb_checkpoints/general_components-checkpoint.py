@@ -42,16 +42,18 @@ def toggle_loading(widget):
 """
 Component/Page Handlers
 """
-get_component_state = lambda component, state="v_model": component.get_state()[state]
-set_component_state = lambda component, name, value: component.set_trait(name, value)
+get_component_state = lambda component, state="v_model": getattr(component, state)
+set_component_state = lambda component, state, value: setattr(component, state, value)
+
+def get_component_state(component, state="v_model"):
+    state = getattr(component, state)
+    return state
 
 def get_component_states(component, states):
     component_states = dict()
     
     for state in states:
-        if isinstance(component, str):
-            print(component)
-        if state in component.class_trait_names():
+        if hasattr(component, state):
             component_states.update({state: get_component_state(component, state)})
             
     return component_states
@@ -86,7 +88,8 @@ class MultiPageHandler:
 
         components_states = {
             component_name: get_component_states(component, states)
-            for component_name, component in self.components[self.page_name].items()
+            for component_name, component 
+            in self.components[self.page_name].items()
         }
 
         return components_states
@@ -448,15 +451,15 @@ def construct_selects_container(selects_meta: dict, title=None):
     return selects_container
 
 
-def construct_two_columns(left_children: list, right_children: list) -> v.Html:
+def construct_two_columns(left_children: list, right_children: list, left_width='30%', right_width='70%') -> v.Html:
     """
     Uses CSS flex helpers to convert two lists 
     of components into a double-columned page
     
     """
     two_columns = v.Html(tag='div', class_='d-flex flex-row', children=[
-        v.Html(tag='div', class_='d-flex flex-column', style_='padding: 10px', children=left_children),
-        v.Html(tag='div', class_='d-flex flex-column', style_='padding: 10px', children=right_children),
+        v.Html(tag='div', class_='d-flex flex-column', style_=f'padding: 10px; width: {left_width}', children=left_children),
+        v.Html(tag='div', class_='d-flex flex-column', style_=f'padding: 10px; width: {right_width}', children=right_children),
     ])
     
     return two_columns
