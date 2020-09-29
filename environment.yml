@@ -1,4 +1,4 @@
-name: Dash
+name: NAM-Dash
 
 channels:
   - conda-forge

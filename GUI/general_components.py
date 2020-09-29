@@ -448,6 +448,20 @@ def construct_selects_container(selects_meta: dict, title=None):
     return selects_container
 
 
+def construct_two_columns(left_children: list, right_children: list) -> v.Html:
+    """
+    Uses CSS flex helpers to convert two lists 
+    of components into a double-columned page
+    
+    """
+    two_columns = v.Html(tag='div', class_='d-flex flex-row', children=[
+        v.Html(tag='div', class_='d-flex flex-column', style_='padding: 10px', children=left_children),
+        v.Html(tag='div', class_='d-flex flex-column', style_='padding: 10px', children=right_children),
+    ])
+    
+    return two_columns
+
+
 """
 GUI Main Container & Navigation
 """
